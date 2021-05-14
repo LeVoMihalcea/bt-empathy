@@ -1,0 +1,10 @@
+azureToken: 1e7a2fe00faa45ffafaab35b7a840f6a
+azureEndpoint: https://northeurope.api.cognitive.microsoft.com/face/v1.0/detect
+
+feign:
+  client:
+    config:
+      AzureCognitiveServicesEmotionClient:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: FULL
