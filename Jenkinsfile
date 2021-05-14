@@ -12,9 +12,9 @@ stage('Build'){
 stage('Deployment'){
     steps{
         sh '''
-        docker-compose -f /opt/bt-backend/docker-compose.yml down || true
-        docker image rm bt-backend || true
-        docker build -t bt-backend .
-        docker-compose -f /opt/bt-backend/docker-compose.yml up -d
+        docker-compose -f /opt/bt-empathy/docker-compose.yml down || true
+        docker image rm bt-empathy || true
+        docker build -t bt-empathy .
+        docker-compose -f /opt/bt-empathy/docker-compose.yml up -d
         '''
 }}}}
