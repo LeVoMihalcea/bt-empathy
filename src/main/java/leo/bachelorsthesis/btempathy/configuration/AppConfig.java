@@ -24,8 +24,13 @@ public class AppConfig {
                 .client(new OkHttpClient())
                 .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())
-                .logger(new Slf4jLogger(AzureCognitiveServicesEmotionClient.class))
+                .logger(new Slf4jLogger())
                 .logLevel(Logger.Level.FULL)
                 .target(AzureCognitiveServicesEmotionClient.class, azureCognitiveServiceUrl);
+    }
+
+    @Bean
+    public Logger.Level loggerLevel(){
+        return Logger.Level.FULL;
     }
 }

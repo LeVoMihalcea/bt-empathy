@@ -1,6 +1,9 @@
 package leo.bachelorsthesis.btempathy.service.emotionService;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.google.gson.JsonObject;
 import leo.bachelorsthesis.btempathy.configuration.AzureCognitiveServicesEmotionClient;
+import leo.bachelorsthesis.btempathy.domain.dto.AzureCognitiveResponseDTO;
 import leo.bachelorsthesis.btempathy.domain.dto.EmpathyRequestDTO;
 import leo.bachelorsthesis.btempathy.domain.dto.EmpathyResponseDTO;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -26,10 +30,11 @@ public class EmotionServiceImpl implements EmotionService {
     public EmpathyResponseDTO analysePicture(EmpathyRequestDTO requestDTO) {
         Map<String, String> headers = getHeaders();
 
-        ResponseEntity<String> responseEntity =
-                azureCognitiveServicesEmotionClient.sendImageToAzure(headers, requestDTO);
+        List<AzureCognitiveResponseDTO> azureCognitiveResponseDTOList =
+                 azureCognitiveServicesEmotionClient.sendImageToAzure(headers, requestDTO);
 
-        return new EmpathyResponseDTO();
+        return azureCognitiveResponseDTOList.size() != 0 ?
+                azureCognitiveResponseDTOList.get(0).getFaceAttributes().getEmotion() : new EmpathyResponseDTO();
     }
 
     private Map<String, String> getHeaders() {
