@@ -11,11 +11,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Random;
+
 @Configuration
 @ComponentScan({"leo.bachelorsthesis.btempathy.configuration"})
 public class AppConfig {
 
-    @Value("${azureEndpoint}")
+    @Value("${azure-endpoint}")
     String azureCognitiveServiceUrl;
 
     @Bean
@@ -30,7 +32,7 @@ public class AppConfig {
     }
 
     @Bean
-    public Logger.Level loggerLevel(){
-        return Logger.Level.FULL;
+    public Random getRandom(){
+        return new Random();
     }
 }

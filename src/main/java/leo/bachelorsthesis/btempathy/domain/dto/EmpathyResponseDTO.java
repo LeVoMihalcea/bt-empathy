@@ -7,6 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@Builder
 public class EmpathyResponseDTO {
     private float anger;
     private float contempt;
