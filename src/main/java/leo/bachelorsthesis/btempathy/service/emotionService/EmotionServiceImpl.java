@@ -1,15 +1,11 @@
 package leo.bachelorsthesis.btempathy.service.emotionService;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.google.gson.JsonObject;
-import leo.bachelorsthesis.btempathy.configuration.AzureCognitiveServicesEmotionClient;
+import leo.bachelorsthesis.btempathy.client.AzureCognitiveServicesEmotionClient;
 import leo.bachelorsthesis.btempathy.domain.dto.AzureCognitiveResponseDTO;
 import leo.bachelorsthesis.btempathy.domain.dto.EmpathyRequestDTO;
 import leo.bachelorsthesis.btempathy.domain.dto.EmpathyResponseDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
